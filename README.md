@@ -1,1 +1,1 @@
-# Alg_Reemplazo_Memoria_Virtual
+# Algoritmos de reemplazo en Memoria Virtual
