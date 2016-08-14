@@ -28,9 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.TablaPA = new System.Windows.Forms.DataGridView();
             this.Idpagina = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Marco = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IntCarga = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -38,15 +36,17 @@
             this.Contador = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BitR = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BitM = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.ListaProc = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.TablaPA)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // TablaPA
             // 
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.TablaPA.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.TablaPA.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.TablaPA.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.TablaPA.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Idpagina,
             this.Marco,
             this.IntCarga,
@@ -54,27 +54,10 @@
             this.Contador,
             this.BitR,
             this.BitM});
-            this.dataGridView1.Location = new System.Drawing.Point(12, 62);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(503, 150);
-            this.dataGridView1.TabIndex = 0;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(249, 23);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(165, 26);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Proceso";
+            this.TablaPA.Location = new System.Drawing.Point(12, 62);
+            this.TablaPA.Name = "TablaPA";
+            this.TablaPA.Size = new System.Drawing.Size(503, 150);
+            this.TablaPA.TabIndex = 0;
             // 
             // Idpagina
             // 
@@ -118,18 +101,35 @@
             this.BitM.Name = "BitM";
             this.BitM.Width = 41;
             // 
+            // ListaProc
+            // 
+            this.ListaProc.FormattingEnabled = true;
+            this.ListaProc.Location = new System.Drawing.Point(249, 23);
+            this.ListaProc.Name = "ListaProc";
+            this.ListaProc.Size = new System.Drawing.Size(121, 21);
+            this.ListaProc.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(165, 26);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(46, 13);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Proceso";
+            // 
             // TablasPaginascs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(524, 224);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.ListaProc);
+            this.Controls.Add(this.TablaPA);
             this.Name = "TablasPaginascs";
             this.Text = "Tabla de pagina";
             this.Load += new System.EventHandler(this.TablasPaginascs_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TablaPA)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -137,8 +137,8 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.DataGridView TablaPA;
+        private System.Windows.Forms.ComboBox ListaProc;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Idpagina;
         private System.Windows.Forms.DataGridViewTextBoxColumn Marco;
