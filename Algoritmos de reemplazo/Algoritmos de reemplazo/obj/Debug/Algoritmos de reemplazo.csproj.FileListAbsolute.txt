@@ -6,8 +6,8 @@ C:\Users\GerardoAugusto\Desktop\AlgReem\Alg_Reemplazo_Memoria_Virtual\Algoritmos
 C:\Users\GerardoAugusto\Desktop\AlgReem\Alg_Reemplazo_Memoria_Virtual\Algoritmos de reemplazo\Algoritmos de reemplazo\obj\Debug\Algoritmos_de_reemplazo.Datos_procesos.resources
 C:\Users\GerardoAugusto\Desktop\AlgReem\Alg_Reemplazo_Memoria_Virtual\Algoritmos de reemplazo\Algoritmos de reemplazo\obj\Debug\Algoritmos_de_reemplazo.Form1.resources
 C:\Users\GerardoAugusto\Desktop\AlgReem\Alg_Reemplazo_Memoria_Virtual\Algoritmos de reemplazo\Algoritmos de reemplazo\obj\Debug\Algoritmos_de_reemplazo.Properties.Resources.resources
-C:\Users\GerardoAugusto\Desktop\AlgReem\Alg_Reemplazo_Memoria_Virtual\Algoritmos de reemplazo\Algoritmos de reemplazo\obj\Debug\Algoritmos_de_reemplazo.TablasPaginascs.resources
 C:\Users\GerardoAugusto\Desktop\AlgReem\Alg_Reemplazo_Memoria_Virtual\Algoritmos de reemplazo\Algoritmos de reemplazo\obj\Debug\Algoritmos de reemplazo.csproj.GenerateResource.Cache
 C:\Users\GerardoAugusto\Desktop\AlgReem\Alg_Reemplazo_Memoria_Virtual\Algoritmos de reemplazo\Algoritmos de reemplazo\obj\Debug\Algoritmos de reemplazo.exe
 C:\Users\GerardoAugusto\Desktop\AlgReem\Alg_Reemplazo_Memoria_Virtual\Algoritmos de reemplazo\Algoritmos de reemplazo\obj\Debug\Algoritmos de reemplazo.pdb
 C:\Users\GerardoAugusto\Desktop\AlgReem\Alg_Reemplazo_Memoria_Virtual\Algoritmos de reemplazo\Algoritmos de reemplazo\obj\Debug\Algoritmos_de_reemplazo.MapaMemoria.resources
+C:\Users\GerardoAugusto\Desktop\AlgReem\Alg_Reemplazo_Memoria_Virtual\Algoritmos de reemplazo\Algoritmos de reemplazo\obj\Debug\Algoritmos_de_reemplazo.VisualizadorTP.resources

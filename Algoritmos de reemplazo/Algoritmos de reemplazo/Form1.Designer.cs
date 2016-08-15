@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.TamPagina = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -56,13 +56,13 @@
             this.Cantpaginas = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.CadenaRef = new System.Windows.Forms.DataGridView();
+            this.Idproceso = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.DireccionL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DirFisica = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.MenuCreferencia = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.verMapaDeMemoriaEnEsteInstanteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verTablasDePaginasEnEsteInstatnteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.Idproceso = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.DireccionL = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DirFisica = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CadenaRef)).BeginInit();
             this.MenuCreferencia.SuspendLayout();
@@ -175,6 +175,7 @@
             // 
             this.CantidadPr.Name = "CantidadPr";
             this.CantidadPr.Size = new System.Drawing.Size(100, 23);
+            this.CantidadPr.Click += new System.EventHandler(this.CantidadPr_Click);
             this.CantidadPr.TextChanged += new System.EventHandler(this.CantidadPr_TextChanged);
             // 
             // definirCantidadDePaginasToolStripMenuItem
@@ -299,6 +300,29 @@
             this.CadenaRef.Size = new System.Drawing.Size(271, 180);
             this.CadenaRef.TabIndex = 5;
             // 
+            // Idproceso
+            // 
+            this.Idproceso.HeaderText = "Idproceso";
+            this.Idproceso.Items.AddRange(new object[] {
+            "1"});
+            this.Idproceso.Name = "Idproceso";
+            this.Idproceso.Width = 60;
+            // 
+            // DireccionL
+            // 
+            this.DireccionL.HeaderText = "Direccion Logica";
+            this.DireccionL.Name = "DireccionL";
+            this.DireccionL.Width = 103;
+            // 
+            // DirFisica
+            // 
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Aqua;
+            this.DirFisica.DefaultCellStyle = dataGridViewCellStyle1;
+            this.DirFisica.HeaderText = "Direccion Fisica";
+            this.DirFisica.Name = "DirFisica";
+            this.DirFisica.ReadOnly = true;
+            this.DirFisica.Width = 98;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -328,29 +352,7 @@
             this.verTablasDePaginasEnEsteInstatnteToolStripMenuItem.Name = "verTablasDePaginasEnEsteInstatnteToolStripMenuItem";
             this.verTablasDePaginasEnEsteInstatnteToolStripMenuItem.Size = new System.Drawing.Size(275, 22);
             this.verTablasDePaginasEnEsteInstatnteToolStripMenuItem.Text = "Ver tablas de paginas en este instatnte";
-            // 
-            // Idproceso
-            // 
-            this.Idproceso.HeaderText = "Idproceso";
-            this.Idproceso.Items.AddRange(new object[] {
-            "1"});
-            this.Idproceso.Name = "Idproceso";
-            this.Idproceso.Width = 60;
-            // 
-            // DireccionL
-            // 
-            this.DireccionL.HeaderText = "Direccion Logica";
-            this.DireccionL.Name = "DireccionL";
-            this.DireccionL.Width = 103;
-            // 
-            // DirFisica
-            // 
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Aqua;
-            this.DirFisica.DefaultCellStyle = dataGridViewCellStyle3;
-            this.DirFisica.HeaderText = "Direccion Fisica";
-            this.DirFisica.Name = "DirFisica";
-            this.DirFisica.ReadOnly = true;
-            this.DirFisica.Width = 98;
+            this.verTablasDePaginasEnEsteInstatnteToolStripMenuItem.Click += new System.EventHandler(this.verTablasDePaginasEnEsteInstatnteToolStripMenuItem_Click);
             // 
             // Form1
             // 

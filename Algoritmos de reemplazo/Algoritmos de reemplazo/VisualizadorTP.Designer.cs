@@ -1,6 +1,6 @@
 ﻿namespace Algoritmos_de_reemplazo
 {
-    partial class TablasPaginascs
+    partial class VisualizadorTP
     {
         /// <summary>
         /// Required designer variable.
@@ -108,6 +108,7 @@
             this.ListaProc.Name = "ListaProc";
             this.ListaProc.Size = new System.Drawing.Size(121, 21);
             this.ListaProc.TabIndex = 1;
+            this.ListaProc.SelectedIndexChanged += new System.EventHandler(this.ListaProc_SelectedIndexChanged);
             // 
             // label1
             // 

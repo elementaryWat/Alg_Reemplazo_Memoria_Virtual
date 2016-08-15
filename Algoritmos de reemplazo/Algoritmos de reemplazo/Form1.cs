@@ -204,13 +204,14 @@ namespace Algoritmos_de_reemplazo
                         {
                             int proceso = Int32.Parse(CadenaRef.Rows[i].Cells[0].Value.ToString());
                             int direccion = Int32.Parse(CadenaRef.Rows[i].Cells[1].Value.ToString());
-                            if (!Mimemoria.paginaenmemoria(proceso-1,direccion,i))
+                            if (!Mimemoria.paginaenmemoria(proceso - 1, direccion, i))
                             {
                                 if (!Mimemoria.estallena())
                                 {
-                                    Mimemoria.asignarmemoria(proceso-1,direccion,i);
+                                    Mimemoria.asignarmemoria(proceso - 1, direccion, i);
                                 }
                             }
+                            Mimemoria.actualizartablas();
                             CadenaRef.Rows[i].ContextMenuStrip = MenuCreferencia;
                             CadenaRef.CellClick += new DataGridViewCellEventHandler(estinst);
                         }
@@ -260,7 +261,17 @@ namespace Algoritmos_de_reemplazo
 
         private void definirTablasDePaginasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Mimemoria.verTablaPaginas();
+            Mimemoria.verTablaPaginas(0);
+        }
+
+        private void verTablasDePaginasEnEsteInstatnteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Mimemoria.verTablaPaginas(instanteseleccionado);
+        }
+
+        private void CantidadPr_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

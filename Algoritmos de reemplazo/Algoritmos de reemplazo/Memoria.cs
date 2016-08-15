@@ -10,7 +10,8 @@ namespace Algoritmos_de_reemplazo
 {
     public class Memoria
     {
-        private TablasPaginascs MitablaP;
+        private VisualizadorTP VisualTP;
+        private TablaPagina MitablaP;
         private MapaMemoria Mimapa;
         public enum Ambitosreemplazo { LOCAL = 1, Global = 2 };
         public Ambitosreemplazo AmbReem;
@@ -25,7 +26,7 @@ namespace Algoritmos_de_reemplazo
         public int tamaniopagina;
         public Memoria()
         {
-            MitablaP = new TablasPaginascs();
+            MitablaP = new TablaPagina();
         }
         public void definircantpag(int cant)
         {
@@ -112,10 +113,16 @@ namespace Algoritmos_de_reemplazo
             }
             Mimapa.Show();
         }
-        public void verTablaPaginas()
+        public void verTablaPaginas(int instante)
         {
-            MitablaP.instantea = 0;
-            MitablaP.Show();
+            VisualTP = new VisualizadorTP(MitablaP);
+            VisualTP.instantea = instante+1;
+            VisualTP.cantproc = MitablaP.cantproc;
+            VisualTP.Show();
+        }
+        public void actualizartablas()
+        {
+            MitablaP.agregarTablasinst();
         }
         public void elegirmarcoraeem()
         {
