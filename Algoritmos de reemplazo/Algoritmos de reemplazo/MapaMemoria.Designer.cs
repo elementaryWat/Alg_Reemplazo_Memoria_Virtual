@@ -36,6 +36,7 @@
             // 
             // MapaMemT
             // 
+            this.MapaMemT.BackgroundColor = System.Drawing.Color.Navy;
             this.MapaMemT.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.MapaMemT.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.IdMarco,
@@ -59,8 +60,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Orange;
             this.ClientSize = new System.Drawing.Size(281, 212);
             this.Controls.Add(this.MapaMemT);
+            this.ForeColor = System.Drawing.Color.Navy;
             this.Name = "MapaMemoria";
             this.Text = "Mapa de Memoria";
             ((System.ComponentModel.ISupportInitialize)(this.MapaMemT)).EndInit();

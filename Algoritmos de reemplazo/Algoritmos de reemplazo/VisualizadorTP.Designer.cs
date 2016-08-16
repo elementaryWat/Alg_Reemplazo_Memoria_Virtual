@@ -45,6 +45,7 @@
             // 
             this.TablaPA.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.TablaPA.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.TablaPA.BackgroundColor = System.Drawing.Color.Navy;
             this.TablaPA.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.TablaPA.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Idpagina,
@@ -103,6 +104,8 @@
             // 
             // ListaProc
             // 
+            this.ListaProc.BackColor = System.Drawing.Color.Navy;
+            this.ListaProc.ForeColor = System.Drawing.Color.Orange;
             this.ListaProc.FormattingEnabled = true;
             this.ListaProc.Location = new System.Drawing.Point(249, 23);
             this.ListaProc.Name = "ListaProc";
@@ -119,15 +122,17 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Proceso";
             // 
-            // TablasPaginascs
+            // VisualizadorTP
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Orange;
             this.ClientSize = new System.Drawing.Size(524, 224);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.ListaProc);
             this.Controls.Add(this.TablaPA);
-            this.Name = "TablasPaginascs";
+            this.ForeColor = System.Drawing.Color.Navy;
+            this.Name = "VisualizadorTP";
             this.Text = "Tabla de pagina";
             this.Load += new System.EventHandler(this.TablasPaginascs_Load);
             ((System.ComponentModel.ISupportInitialize)(this.TablaPA)).EndInit();

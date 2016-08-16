@@ -15,12 +15,14 @@ namespace Algoritmos_de_reemplazo
         bool RefAproceso;
         int cantidadProc;
         Memoria Mimemoria;
+        int cantPRap;
         int instanteseleccionado;
+        public bool unosolo;
         public Form1()
         {
             InitializeComponent();
             RefAproceso = false;
-            Mimemoria = new Memoria();
+            Mimemoria = new Memoria(this);
             Mimemoria.AmbReem = Memoria.Ambitosreemplazo.Global;
             Mimemoria.Algreem = Memoria.AlgsReemplazo.LRU;
             cantidadProc = 1;
@@ -51,10 +53,10 @@ namespace Algoritmos_de_reemplazo
             {
                 optimoTm.Checked = false;
             }
-            if (segundaOTM != ts)
-            {
-                segundaOTM.Checked = false;
-            }
+            //if (segundaOTM != ts)
+            //{
+            //    segundaOTM.Checked = false;
+            //}
             if (ts==fIFOTM)
             {
                 Mimemoria.Algreem = Memoria.AlgsReemplazo.FIFO;
@@ -67,10 +69,10 @@ namespace Algoritmos_de_reemplazo
             {
                 Mimemoria.Algreem = Memoria.AlgsReemplazo.Optimo;
             }
-            if (ts == segundaOTM)
-            {
-                Mimemoria.Algreem = Memoria.AlgsReemplazo.SegundaOportunidad;
-            }
+            //if (ts == segundaOTM)
+            //{
+            //    Mimemoria.Algreem = Memoria.AlgsReemplazo.SegundaOportunidad;
+            //}
         }
         public bool solicitarcantp()
         {
@@ -111,21 +113,27 @@ namespace Algoritmos_de_reemplazo
                 Aprocesos.Checked = false;
                 RefAproceso = false;
                 Idproceso.Visible = false;
+                unosolo = true;
+                cantidadProc = 1;
             }
             if (Adirecciones != ts)
             {
                 Adirecciones.Checked = false;
                 RefAproceso = true;
+                unosolo = false;
                 if (aVariosProc.Checked)
                 {
                     Idproceso.Visible = true;
                 }
+                cantidadProc = cantPRap;
             }
+            definirdatosCombo();
         }
         private void definirdatosCombo()
         {
             DataGridViewComboBoxColumn ColProc = CadenaRef.Columns[0] as DataGridViewComboBoxColumn;
             ColProc.Items.Clear();
+            CadenaRef.Rows.Clear();
             for (int i=1;i<=cantidadProc;i++)
             {
                 ColProc.Items.Add(i.ToString());
@@ -142,14 +150,17 @@ namespace Algoritmos_de_reemplazo
             {
                 aUnoProc.Checked = false;
                 Idproceso.Visible = true;
+                unosolo = false;
                 cantidadProc = Int32.Parse(CantidadPr.Text);
             }
             if (aVariosProc != ts)
             {
                 aVariosProc.Checked = false;
+                unosolo = true;
                 Idproceso.Visible = false;
                 cantidadProc = 1;
             }
+            cantPRap = cantidadProc;
             definirdatosCombo();
         }
 
@@ -177,6 +188,8 @@ namespace Algoritmos_de_reemplazo
         }
         private void tratarCadenaDeReferenciasToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            int cantC = 0;
+            int cantE = 0;
             try
             {
                 if (solicitarcantp() && solicitartamp())
@@ -188,33 +201,76 @@ namespace Algoritmos_de_reemplazo
                         tamaniosmax[i] = 0;
                     }
                     int cantidadfilas = CadenaRef.Rows.Count - 1;
+                    Mimemoria.AlgreemBack = Mimemoria.Algreem;
                     if (cantidadfilas > 0)
                     {
                         for (int i = 0; i < cantidadfilas; i++)
                         {
-                            int proceso = Int32.Parse(CadenaRef.Rows[i].Cells[0].Value.ToString());
-                            int direccion = Int32.Parse(CadenaRef.Rows[i].Cells[1].Value.ToString());
-                            if (direccion > tamaniosmax[proceso - 1])
+                            int proceso;
+                            if (unosolo)
                             {
-                                tamaniosmax[proceso-1] = direccion;
+                                proceso = 0;
+                            }
+                            else
+                            {
+                                proceso = Int32.Parse(CadenaRef.Rows[i].Cells[0].Value.ToString())-1;
+                            }
+                            int direccion = Int32.Parse(CadenaRef.Rows[i].Cells[1].Value.ToString());
+                            if (direccion > tamaniosmax[proceso])
+                            {
+                                tamaniosmax[proceso] = direccion;
                             }
                         }
                         Mimemoria.calcularcantpagPro(tamaniosmax);
                         for (int i = 0; i < cantidadfilas; i++)
                         {
-                            int proceso = Int32.Parse(CadenaRef.Rows[i].Cells[0].Value.ToString());
+                            int proceso;
+                            DataGridViewCellStyle MDstyle = new DataGridViewCellStyle();
+                            MDstyle.BackColor = Color.White;
+                            MDstyle.ForeColor = Color.Black;
+                            CadenaRef.Rows[i].Cells[1].Style = MDstyle;
+                            if (unosolo)
+                            {
+                                proceso = 0;
+                            }
+                            else
+                            {
+                                proceso = Int32.Parse(CadenaRef.Rows[i].Cells[0].Value.ToString()) - 1;
+                            }
                             int direccion = Int32.Parse(CadenaRef.Rows[i].Cells[1].Value.ToString());
-                            if (!Mimemoria.paginaenmemoria(proceso - 1, direccion, i))
+                            if (!Mimemoria.paginaenmemoria(proceso, direccion, i))
                             {
                                 if (!Mimemoria.estallena())
                                 {
-                                    Mimemoria.asignarmemoria(proceso - 1, direccion, i);
+                                    Mimemoria.asignarmemoria(proceso, direccion, i);
+                                    DataGridViewCellStyle Mstyle = new DataGridViewCellStyle();
+                                    Mstyle.BackColor = Color.OrangeRed;
+                                    Mstyle.ForeColor = Color.White;
+                                    CadenaRef.Rows[i].Cells[1].Style = Mstyle;
+                                    cantC++;
+                                }
+                                else
+                                {
+                                    Mimemoria.reemplazarMarco(proceso,direccion,i);
+                                    DataGridViewCellStyle Mstyle = new DataGridViewCellStyle();
+                                    Mstyle.BackColor = Color.IndianRed;
+                                    Mstyle.ForeColor = Color.White;
+                                    CadenaRef.Rows[i].Cells[1].Style = Mstyle;
+                                    cantE++;
                                 }
                             }
+                            else
+                            {
+                                Mimemoria.referenciar(proceso,direccion,i);
+                            }
                             Mimemoria.actualizartablas();
+                            CadenaRef.Rows[i].Cells[2].Value = Mimemoria.obtenerDirFisica(proceso,direccion);
                             CadenaRef.Rows[i].ContextMenuStrip = MenuCreferencia;
                             CadenaRef.CellClick += new DataGridViewCellEventHandler(estinst);
                         }
+                        FPC.Text="Fallos de pagina comunes: "+cantC;
+                        FPE.Text = "Fallos de pagina atribuibles al algoritmo: " + cantE;
+                        Mimemoria.Algreem = Mimemoria.AlgreemBack;
                     }
                     else
                     {
@@ -251,6 +307,7 @@ namespace Algoritmos_de_reemplazo
                 CantidadPr.Text = "2";
                 cantidadProc = 2;
             }
+            cantPRap = cantidadProc;
             definirdatosCombo();
         }
 
@@ -269,7 +326,8 @@ namespace Algoritmos_de_reemplazo
             Mimemoria.verTablaPaginas(instanteseleccionado);
         }
 
-        private void CantidadPr_Click(object sender, EventArgs e)
+
+        private void meotodToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }

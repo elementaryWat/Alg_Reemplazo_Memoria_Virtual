@@ -21,6 +21,17 @@ namespace Algoritmos_de_reemplazo
             InitializeComponent();
             MisTablas = tablac;
         }
+        private string DeterminarT(int valor)
+        {
+            if (valor == -1)
+            {
+                return "-";
+            }
+            else
+            {
+                return valor.ToString();
+            }
+        }
         private void TablasPaginascs_Load(object sender, EventArgs e)
         {
             ListaProc.Items.Clear();
@@ -42,10 +53,10 @@ namespace Algoritmos_de_reemplazo
             {
                 TablaPA.Rows.Add();
                 TablaPA.Rows[i].Cells[0].Value = i.ToString();
-                TablaPA.Rows[i].Cells[1].Value = Marub[i].ToString();
-                TablaPA.Rows[i].Cells[2].Value = InCarga[i].ToString();
+                TablaPA.Rows[i].Cells[1].Value = DeterminarT(Marub[i]);
+                TablaPA.Rows[i].Cells[2].Value = DeterminarT(InCarga[i]);
                 string bv = "";
-                if (Bitsvalidop[i] == 0)
+                if (Bitsvalidop[i] == 0 || Marub[i]==-1)
                 {
                     bv = "i";
                 }
@@ -54,9 +65,9 @@ namespace Algoritmos_de_reemplazo
                     bv = "v";
                 }
                 TablaPA.Rows[i].Cells[3].Value = bv;
-                TablaPA.Rows[i].Cells[4].Value = Conts[i].ToString();
-                TablaPA.Rows[i].Cells[5].Value = BitR[i].ToString();
-                TablaPA.Rows[i].Cells[6].Value = BitM[i].ToString();
+                TablaPA.Rows[i].Cells[4].Value = DeterminarT(Conts[i]);
+                TablaPA.Rows[i].Cells[5].Value = DeterminarT(BitR[i]);
+                TablaPA.Rows[i].Cells[6].Value = DeterminarT(BitM[i]);
             }
         }
 
@@ -75,8 +86,8 @@ namespace Algoritmos_de_reemplazo
             {
                 TablaPA.Rows.Add();
                 TablaPA.Rows[i].Cells[0].Value = i.ToString();
-                TablaPA.Rows[i].Cells[1].Value = Marub[i].ToString();
-                TablaPA.Rows[i].Cells[2].Value = InCarga[i].ToString();
+                TablaPA.Rows[i].Cells[1].Value = Marub[i];
+                TablaPA.Rows[i].Cells[2].Value = InCarga[i];
                 string bv = "";
                 if (Bitsvalidop[i] == 0)
                 {
@@ -87,9 +98,9 @@ namespace Algoritmos_de_reemplazo
                     bv = "v";
                 }
                 TablaPA.Rows[i].Cells[3].Value = bv;
-                TablaPA.Rows[i].Cells[4].Value = Conts[i].ToString();
-                TablaPA.Rows[i].Cells[5].Value = BitR[i].ToString();
-                TablaPA.Rows[i].Cells[6].Value = BitM[i].ToString();
+                TablaPA.Rows[i].Cells[4].Value = Conts[i];
+                TablaPA.Rows[i].Cells[5].Value = BitR[i];
+                TablaPA.Rows[i].Cells[6].Value = BitM[i];
             }
         }
     }

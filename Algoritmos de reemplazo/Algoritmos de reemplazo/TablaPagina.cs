@@ -8,6 +8,7 @@ namespace Algoritmos_de_reemplazo
 {
     public class TablaPagina
     {
+        Memoria Mimemoria;
         public List<List<int[]>> TValidos;
         public List<List<int[]>> MUbicacion;
         public List<List<int[]>> ICarga;
@@ -23,6 +24,10 @@ namespace Algoritmos_de_reemplazo
         public List<int[]> Contadores;
         public int[] cantpagproc;
         public int cantproc;
+        public TablaPagina(Memoria memac)
+        {
+            Mimemoria = memac;
+        }
         public void DefinirTablas(int[] cantpaginas)
         {
             TValidos = new List<List<int[]>>();
@@ -48,12 +53,12 @@ namespace Algoritmos_de_reemplazo
                 int[] Contadoresa = new int[cantpaginas[i]];
                 for (int h = 0; h < cantpaginas[i]; h++)
                 {
-                    Bitsvalidosa[h] = 0;
-                    MarcosUba[h] = 0;
-                    InstantCar[h] = 0;
-                    BitsRa[h] = 0;
-                    BitsMa[h] = 0;
-                    Contadoresa[h] = 0;
+                    Bitsvalidosa[h] = -1;
+                    MarcosUba[h] = -1;
+                    InstantCar[h] = -1;
+                    BitsRa[h] = -1;
+                    BitsMa[h] = -1;
+                    Contadoresa[h] = -1;
                 }
                 TPBvalidos.Add(Bitsvalidosa);
                 MarcosUbicacion.Add(MarcosUba);
@@ -84,10 +89,27 @@ namespace Algoritmos_de_reemplazo
         {
             int[] Bitsvalidop = TPBvalidos[proceso];
             Bitsvalidop[pagina] = 1;
-            int[] MarcoU = MarcosUbicacion[proceso];
-            MarcoU[pagina] = marco;
-            int[] instanteC = InstCarga[proceso];
-            instanteC[pagina] = instante;
+            MarcosUbicacion[proceso][pagina] = marco;
+            InstCarga[proceso][pagina] = instante;
+            Contadores[proceso][pagina] = instante;
+        }
+        public void ReiniciarFilaTabla(int proceso,int pagina)
+        {
+            TPBvalidos[proceso][pagina] = 0;
+            MarcosUbicacion[proceso][pagina] = -1;
+            InstCarga[proceso][pagina] = -1;
+            Contadores[proceso][pagina] = -1;
+        }
+        public void ReferenciarMarco(int proceso, int pagina,int instante)
+        {
+            int[] Contador = Contadores[proceso];
+            Contador[pagina]=instante;
+            Mimemoria.ContadoresM[MarcosUbicacion[proceso][pagina]] = instante;
+        }
+        public int ObtnerMarco(int proceso, int pagina)
+        {
+            int[] MarsU = MarcosUbicacion[proceso];
+            return MarsU[pagina];
         }
         private List<int[]> ClonaRlista(List<int[]>Lista)
         {
@@ -108,6 +130,36 @@ namespace Algoritmos_de_reemplazo
             BR.Add(ClonaRlista(BitsR));
             BM.Add(ClonaRlista(BitsM));
             Cs.Add(ClonaRlista(Contadores));
+        }
+        public int elegirPaginaReem(int proceso)
+        {
+            int menor = -1;
+            int indicemenor = -1;
+            int cantpagPa=cantpagproc[proceso];
+            switch (Mimemoria.Algreem)
+            {
+                case Memoria.AlgsReemplazo.FIFO:
+                    for (int i = 0; i < cantpagPa; i++)
+                    {
+                        if ((InstCarga[proceso][i] < menor && InstCarga[proceso][i] !=-1) || menor == -1)
+                        {
+                            menor = InstCarga[proceso][i];
+                            indicemenor = i;
+                        }
+                    }
+                    break;
+                case Memoria.AlgsReemplazo.LRU:
+                    for (int i = 0; i < cantpagPa; i++)
+                    {
+                        if ((Contadores[proceso][i] < menor && Contadores[proceso][i] !=-1) || menor == -1)
+                        {
+                            menor = Contadores[proceso][i];
+                            indicemenor = i;
+                        }
+                    }
+                    break;
+            }
+            return MarcosUbicacion[proceso][indicemenor];
         }
     }
 }
